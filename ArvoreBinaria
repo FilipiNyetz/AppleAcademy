@@ -4,29 +4,31 @@
 typedef struct no{
 	int conteudo;
 	struct no *esquerda,*direita;
-}No;
+}No;//Define a estrutura de um nó, declarando o conteudo e dois ponteiros para struct nó a esquerda e a direita
 
 typedef struct ArvB{
 	No *raiz;
-}ArvB;
+}ArvB;// Definie a struct para a arvore Binária, essa struct possui um ponteiro para o nó raiz, ponto incial
 
 void inserirEsquerda(No *no, int valor);
 void inserirDireita(No *no, int valor);
-void inserir(ArvB* arv, int valor);
+void inserir(ArvB* arv, int valor);//Declara as funções que serão usadas
 void imprimir(No *raiz);
 
-void inserirDireita(No *no, int valor){
-		if(no->direita==NULL){
-			No* novo=(No*)malloc(sizeof(No));
-	 		novo->conteudo=valor;
-	 		novo->esquerda=NULL;
-	 		novo->direita=NULL;
-	 		no->direita=novo;
-		}else{
-			if(valor > no->direita->conteudo){
+// Recebe como parâmetro o nó atual (um ponteiro para a struct No) e o valor que foi inserido
+void inserirDireita(No *no, int valor){//Função que é usada para fazer inserções a subarvore direita de um nó
+		if(no->direita==NULL){//Se não existir nó à direita do nó atual.
+			No *novo=(No*)malloc(sizeof(No));// No aponta para um ponteiro novo e atribui espaço dinamico de memória 
+	 		novo->conteudo=valor;// atribui o conteudo do novo nó
+	 		novo->esquerda=NULL; //Inicializa o ponteiro esquerdo do novo nó como NULL.
+	 		novo->direita=NULL; //Inicializa o ponteiro direito do novo nó como NULL.
+	 		no->direita=novo;//Como não existia nada a direita, declara o no que já existia agora apontara para o endereço do ponteiro novo
+	 		
+		}else{// Bloco de execução caso já exista um nó à direita do nó atual.
+			if(valor > no->direita->conteudo){//se o valor for maior que o do nó já existente, chamará a função novamente, de forma recursiva 
 				inserirDireita(no->direita, valor);
 			}else{
-				inserirEsquerda(no->direita , valor);
+				inserirEsquerda(no->direita , valor);// Se o valor for menor, chama a função para inserir à esquerda.
 			}
 		}
 }
@@ -46,18 +48,18 @@ void inserirEsquerda(No *no, int valor){
 		}
 	}
 }
-
+// Recebe como parâmetro o ponteiro arv, que aponta para a estrutura ArvB (árvore binária)
 void inserir(ArvB*arv, int valor){
-	 if(arv->raiz==NULL){
-	 	No* novo=(No*)malloc(sizeof(No));
-	 	novo->conteudo=valor;
+	 if(arv->raiz==NULL){//se o valor de raiz da struct for nulo faz:
+	 	No* novo=(No*)malloc(sizeof(No));//Aloca espaço para um novo nó
+	 	novo->conteudo=valor;//Insere valor para o no
 	 	novo->esquerda=NULL;
 	 	novo->direita=NULL;
-	 	arv->raiz=novo;
+	 	arv->raiz=novo;//Atribui as informações de novo a raiz da struct apontada por arv
 	 }else{
-	 	if(valor < arv->raiz->conteudo){
-	 		inserirEsquerda(arv->raiz,valor);
-		 }else{
+	 	if(valor < arv->raiz->conteudo){//Valor menor que raiz
+	 		inserirEsquerda(arv->raiz,valor);//Passa a raiz como o nó atual e chama a funcao que insere valores a subarvore da esquerda
+		 }else{//valor maior que raiz
 		 	inserirDireita(arv->raiz,valor);
 		 }
 	 }
