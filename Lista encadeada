@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct itemNo{//Cria a struct itemNo
+	int conteudo; //declara que ela tera um valor
+	struct itemNo *prox;//declara um ponteiro prox, que apontara para uma struct igual a essa, 
+	//que será o proximo nó da lista
+}No;//O nome dessa struct é No
+
+typedef struct {
+    No *primeiro; // Cria um ponteiro chamado 'primeiro', que aponta para o primeiro nó da lista
+} listaEncadeada; // Cria a estrutura chamada 'listaEncadeada'
+
+
+listaEncadeada *criaLista(){// Essa é uma função que retornará um ponteiro para a estrutura listaEncadeada
+	listaEncadeada * lista = malloc(sizeof(listaEncadeada)); // Aloca espaço dinâmico para a estrutura listaEncadeada
+	//ou seja cria espaço na memoria para a estrutura listaEncadeada
+	
+	lista->primeiro=NULL;//Atribui valor Nulo ao ponteiro "primeiro", ou seja a lista está vazia, sem nenhum nó
+	return lista;
+}
+
+// Função que recebe como parâmetro um ponteiro para a estrutura listaEncadeada e um valor a ser inserido
+void inserirElemento(listaEncadeada *lista, int valor) {
+	
+    No *novo = malloc(sizeof(No)); // Aloca memória para o novo nó
+    novo->conteudo = valor;         // Atribui o valor passado como parâmetro ao novo nó
+    novo->prox = NULL;              // O novo nó será o último, então seu próximo é NULL
+
+    if (lista->primeiro == NULL) {
+        // Se a lista estiver vazia, o novo nó se torna o primeiro
+        // Isso ocorre na primeira inserção
+        // Isso serve porque é impossível não existir um primeiro nó, pois ele é a referência para os que o seguem
+        lista->primeiro = novo;
+    } else {
+        // Se a lista não estiver vazia, percorre até o final
+        No *temp = lista->primeiro; // Cria um nó temporário, começando pelo primeiro item
+        while (temp->prox != NULL) { // Enquanto houver um próximo nó
+            temp = temp->prox; // Move para o próximo nó
+        }
+        temp->prox = novo; // Conecta o novo nó ao final da lista
+    }
+
+    printf("Elemento inserido: %d\n", novo->conteudo);
+}
+
+
+// Função que recebe como parâmetro um ponteiro para a estrutura listaEncadeada
+void imprimir(listaEncadeada *lista) {
+    No *no = lista->primeiro; // Declara um ponteiro 'no' da estrutura No e inicializa com o primeiro nó
+    while (no != NULL) { // Percorre a lista até encontrar um nó nulo
+        printf("%d\n", no->conteudo); // Imprime o conteúdo do nó atual
+        no = no->prox; // Atualiza o ponteiro 'no' para apontar para o próximo nó da lista
+    }
+}
+
+
+int main() {
+    int valor, op;
+    listaEncadeada *lista = criaLista(); // Cria a lista encadeada
+
+    do {
+        printf("\n0 - Sair\n1 - Inserir\n2 - Imprimir\n");
+        scanf("%d", &op);
+        switch (op) {
+            case 0:
+                printf("Saindo...\n");
+                break; 
+            case 1:
+                printf("Insira um valor: ");
+                scanf("%d", &valor);
+                inserirElemento(lista, valor); // Insere o elemento na lista
+                break;
+            case 2:
+                printf("Imprimindo...\n");
+                imprimir(lista); // Imprime a lista a partir do primeiro nó
+                break;
+            default:
+                printf("Opção inválida!\n");
+        }
+    } while (op != 0);
+
+    return 0;
+}
