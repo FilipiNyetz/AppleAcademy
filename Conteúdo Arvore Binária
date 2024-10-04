@@ -1,5 +1,6 @@
 Árvore Binária
-Uma árvore binária é uma estrutura de dados composta por nós, orientada por uma raiz. Cada nó pode ter no máximo dois filhos, chamados de subárvore esquerda e subárvore direita.
+Uma árvore binária é uma estrutura de dados composta por nós, orientada por uma raiz. 
+Cada nó pode ter no máximo dois filhos, chamados de subárvore esquerda e subárvore direita.
 
 Estrutura de um Nó
 Cada nó da árvore é definido por uma estrutura (em C, por exemplo, um struct) que contém três partes principais:
@@ -12,7 +13,9 @@ Visualmente, a estrutura de um nó seria representada assim:
 Ponteiro esquerda	Conteúdo	Ponteiro direita
 NULL ou endereço	Valor	NULL ou endereço
 Exemplo de Árvore Binária
-Abaixo está um exemplo de árvore binária com uma raiz de valor 1000. O nó 500 é menor que a raiz, portanto, fica à esquerda, e o nó 1500 é maior que a raiz, ficando à direita. O nó 1800, maior que 1500, está à direita de 1500:
+Abaixo está um exemplo de árvore binária com uma raiz de valor 1000. 
+O nó 500 é menor que a raiz, portanto, fica à esquerda.
+O nó 1500 é maior que a raiz, ficando à direita. O nó 1800, maior que 1500, está à direita de 1500:
 
 Copiar código
        1000
@@ -25,7 +28,8 @@ Comparação com a raiz: Quando um novo valor é inserido, ele é comparado prim
 
 Se o valor for menor que a raiz, ele será inserido na subárvore esquerda.
 Se o valor for maior que a raiz, ele será inserido na subárvore direita.
-Comparação subsequente: Após a comparação com a raiz, o novo valor é comparado com o próximo nó da árvore (à esquerda ou à direita, dependendo do valor). Isso continua até encontrar um local adequado para inserção (um nó NULL).
+Comparação subsequente: Após a comparação com a raiz, o novo valor é comparado com o próximo nó da árvore (à esquerda ou à direita, dependendo do valor). 
+Isso continua até encontrar um local adequado para inserção (um nó NULL).
 
 Exemplo de Inserção
 Se a raiz for o valor 1000 e desejarmos inserir o valor 1800, o processo será:
