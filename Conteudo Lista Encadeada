@@ -1,0 +1,49 @@
+LISTAS ENCADEADAS
+O que são ->  Sequências de células (nós) armazenadas na memória, que armazenam somente célula do mesmo tipo.
+Da mesma forma que um array só armazena um tipo de dado.
+Cada célula é chamado de node, contendo um valor e uma referência pro
+próximo elemento
+
+DIFERENÇA ENTRE ARRAY E LISTA ->Listas Encadeadas não precisam de um bloco de memória de tamanho fixo, tornando-se uma estrutura dinâmica.
+Já que o seu tamanho pode crescer ou diminuir de forma eficiente durante a execução do programa.
+
+ESTRUTURA DA LISTA: A lista é definida por duas CÉLULAS PRINCIPAIS:
+  A célula Nó que é uma struct com dois valores:
+    - um dado acerca do conteudo da célula 
+    - um ponteiro do tipo Nó que aponta para a proxima estrutura Nó. 
+    struct No {
+        int conteudo;         // Dado armazenado no nó
+        struct No *prox;      // Ponteiro para o próximo nó
+    };
+  E uma estrutura inicial:
+    - possui valor de um ponteiro do tipo Nó que aponta para o inicio 
+    // Estrutura da lista encadeada (cabeçalho)
+    struct Lista {
+        struct No *inicio;    // Ponteiro para o primeiro nó da lista
+    };
+
+O ponteiro da célula Nó é declarado da seguinte forma: Nó *pNode. 
+Esse ponteiro, pNode, pode acessar o valor da estrutura para a qual ele aponta usando a seguinte sintaxe: 
+  pNode->conteudo exibirá o conteúdo armazenado no nó ao qual pNode está apontando. 
+  pNode->prox acessa o ponteiro que aponta para o próximo nó na lista.
+
+Se pNode for o endereço da última célula da lista, então o valor de pNode->prox será NULL, indicando o fim da lista encadeada.
+ETAPAS:
+1 - Função: Inicializar a lista Cria uma função que retornara um ponteiro chamado primeiro para struct Nó. O objetivo dessa função é inicializar a lista.
+alocando um espaço na memoria e declarando qual o ponteiro inicial
+
+2 - Função: Adicionar Itens na lista Cria uma função que recebe como parâmetro um ponteiro de Nó que aponta para o endereço do atual nó e um valor para esse nó
+Declara um ponteiro para esse novo nó;
+Aloca espaço na memória para o novo nó;
+O novo nó receberá as informações do valor recebido como parâmetro;
+E novoNó->prox aponta para o endereço da próxima célula;
+O nó atual terá como no->prox = endereço de novo, então o ponteiro atual começara a apontar para o endereço de novo;
+
+RESUMO ADIÇÃO:
+A função adicionarItem aloca um novo nó, armazena o valor recebido, conecta o novo nó à lista atual, 
+e faz o nó atual apontar para o novo nó, garantindo que a sequência da lista encadeada seja mantida.
+
+PARA QUE SERVE: 
+Serve para alocar grandes informações de tamanho imprevisível, na qual não deve existir tamanho máximo para o armazenamento.
+Essa estrutura é base para pilhas, filas e buscas binárias
+
