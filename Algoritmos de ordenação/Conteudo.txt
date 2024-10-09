@@ -4,10 +4,22 @@
 Se o primeiro for maior que o segundo, eles trocam de posição. 
 Esse processo se repete até que a lista esteja completamente ordenada. 
 Em cada passagem, o maior elemento "borbulha" para o final da lista. 
-Após cada iteração, o próximo maior elemento vai ficando na sua posição final, e o algoritmo vai comparando apenas os elementos restantes até que nenhuma troca seja mais necessária.
+Após cada iteração, o próximo maior elemento vai ficando na sua posição final, e o algoritmo vai comparando os elementos restantes
+até que nenhuma troca seja mais necessária.
 
-**Selection Sort** → O algoritmo percorre a lista para encontrar o menor elemento e o coloca na primeira posição. Em seguida, ele procura o segundo menor e o coloca na segunda posição, e assim por diante, até que a lista esteja ordenada. Ele sempre faz a troca do menor elemento encontrado com o elemento na posição correta.
+**Selection Sort** → O algoritmo percorre a lista para encontrar o menor elemento e o coloca na primeira posição. 
+Em seguida, ele procura o segundo menor e o coloca na segunda posição, 
+e assim por diante, até que a lista esteja ordenada. 
+Ele sempre faz a troca do menor elemento encontrado com o elemento na posição correta.
 
-**Insertion Sort** → O algoritmo constrói a lista ordenada uma entrada por vez. Ele pega o próximo elemento não ordenado e o insere na posição correta em relação aos elementos anteriores. A lista já ordenada à esquerda vai crescendo à medida que os elementos são inseridos na posição correta. No exemplo da lista {5,2,6,4,1}, primeiro olha o 5 (considerado já ordenado), depois olha o 2 e o insere antes do 5, ficando {2,5,6,4,1}, e assim continua.
+**Insertion Sort** → O algoritmo constrói a lista ordenada uma entrada por vez. 
+Ele pega o próximo elemento não ordenado e o insere na posição correta em relação aos elementos anteriores. 
+A lista já ordenada à esquerda vai crescendo à medida que os elementos são inseridos na posição correta. 
+No exemplo da lista {5,2,6,4,1}, primeiro olha o 5 (considerado já ordenado), depois olha o 2 e o insere antes do 5, 
+ficando {2,5,6,4,1}, e assim continua.
 
-**Quick Sort (mais eficiente em tempo de execução)** → Usa a técnica de dividir para conquistar .O algoritmo seleciona um elemento como pivô e particiona a lista em duas sublistas: uma com os elementos menores que o pivô e outra com os maiores. O processo é recursivo, aplicando a mesma estratégia às sublistas. Esse particionamento e recursão continuam até que a lista esteja completamente ordenada.
+**Quick Sort (mais eficiente em tempo de execução)** → Usa a técnica de dividir para conquistar.
+O algoritmo seleciona um elemento como pivô e particiona a lista em duas sublistas: uma com os elementos menores que o pivô 
+e outra com os maiores. 
+O processo é recursivo, aplicando a mesma estratégia às sublistas. 
+Esse particionamento e recursão continuam até que a lista esteja completamente ordenada.
