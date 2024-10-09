@@ -1,6 +1,10 @@
 ## Algoritmos de ordenação
 
-**Bubble Sort (mais fácil)** → O algoritmo percorre repetidamente a lista, comparando dois elementos adjacentes. Se o primeiro for maior que o segundo, eles trocam de posição. Esse processo se repete até que a lista esteja completamente ordenada. Em cada passagem, o maior elemento "borbulha" para o final da lista. Após cada iteração, o próximo maior elemento vai ficando na sua posição final, e o algoritmo vai comparando apenas os elementos restantes até que nenhuma troca seja mais necessária.
+**Bubble Sort (mais fácil)** → O algoritmo percorre repetidamente a lista, comparando dois elementos adjacentes. 
+Se o primeiro for maior que o segundo, eles trocam de posição. 
+Esse processo se repete até que a lista esteja completamente ordenada. 
+Em cada passagem, o maior elemento "borbulha" para o final da lista. 
+Após cada iteração, o próximo maior elemento vai ficando na sua posição final, e o algoritmo vai comparando apenas os elementos restantes até que nenhuma troca seja mais necessária.
 
 **Selection Sort** → O algoritmo percorre a lista para encontrar o menor elemento e o coloca na primeira posição. Em seguida, ele procura o segundo menor e o coloca na segunda posição, e assim por diante, até que a lista esteja ordenada. Ele sempre faz a troca do menor elemento encontrado com o elemento na posição correta.
 
