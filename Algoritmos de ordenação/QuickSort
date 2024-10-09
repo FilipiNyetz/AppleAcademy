@@ -1,0 +1,50 @@
+ALGORITMO QUICK SORT
+Mais complexo, porém mais eficaz e rápido. DIVIDIR PARA CONQUISTAR, PIVO
+#include <stdio.h>
+
+void quickSort(int *lista, int tam) {//Declara a função responsável pela ordenação
+    if (tam < 2) { // Se a lista tiver menos de 2 elementos, já está ordenada
+        return;
+    }
+
+    int pivo = lista[tam / 2]; // Escolhe o pivô
+    int esquerda[tam], direita[tam]; // Sublistas temporárias
+    int esqIndex = 0, dirIndex = 0; // Índices para as sublistas
+
+    for (int i = 0; i < tam; i++) {//Loop que percorre toda a lista conferindo numero a numero
+        if (i == tam / 2) continue; // Se o i for igual ao pivo Ignora o pivô
+
+        if (lista[i] < pivo) {//Se o numero for menor que o pivo
+            esquerda[esqIndex++] = lista[i]; // Adiciona à sublista esquerda
+        } else {//Se o numero nem for menor que o pivo e também nao for o pivo, ele será obviamente maior
+            direita[dirIndex++] = lista[i]; // Adiciona à sublista direita
+        }
+    }
+    // Chama recursivamente para as sublistas
+    quickSort(esquerda, esqIndex); // Ordena a parte esquerda, pois ira fazer o mesmo processo, de pegar um pivo para esquerda, dividir em sublista...
+    quickSort(direita, dirIndex); // Ordena a parte direita
+
+    // Copia os elementos de volta para a lista original
+    for (int i = 0; i < esqIndex; i++) {//Percorre todos os elemento da lista esquerda
+        lista[i] = esquerda[i];//Os indices da lista irão receber os valores da lista esquerda
+    }
+    lista[esqIndex] = pivo; // Coloca o pivô no meio
+    for (int i = 0; i < dirIndex; i++) {
+        lista[esqIndex + 1 + i] = direita[i]; // Copia a parte direita
+    }
+}
+
+int main() {
+    int lista[6] = {999, 1,5,6,8,10};
+    int tamanhoLista = sizeof(lista) / sizeof(lista[0]);
+
+    quickSort(lista, tamanhoLista);//Chama a função e passa parametro
+
+    // Imprime a lista ordenada
+    for (int i = 0; i < tamanhoLista; i++) {
+        printf("%d ", lista[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
